@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import page.MainPage;
 
 @Tag("smoke")
-public class MainPageUITest extends BaseTest {
+public class
+MainPageUITest extends BaseTest {
     private final MainPage mainPage = new MainPage();
 
     @Test

@@ -1,5 +1,6 @@
 package e2e;
 
+import annotation.Retry;
 import annotation.UserRandom;
 import config.BaseTest;
 import model.UserLogin;
@@ -11,7 +12,6 @@ import page.MainPage;
 import org.junit.jupiter.api.Test;
 
 
-@Tag("E2E")
 public class UserTest extends BaseTest {
     private final MainPage mainPage = new MainPage();
     private UserRegistration userRegistration;
@@ -23,6 +23,8 @@ public class UserTest extends BaseTest {
 
     }
 
+    @Retry(2)
+    @Tag("regress")
     @Test
     public void shouldRegisterNewUser() {
         Assertions.assertTrue(mainPage.openRegisterPage().register(userRegistration));

@@ -7,14 +7,13 @@ import org.junit.jupiter.api.*;
 import page.AccountPage;
 import page.MainPage;
 
-@Tag("smoke")
 public class AccountPageUITest extends BaseTest {
     private final MainPage mainPage = new MainPage();
     private final UserLogin userLogin = new UserLogin();
     private final AccountPage accountPage = new AccountPage();
 
     @BeforeEach
-    public void init() {
+    public void initData() {
         mainPage.login(userLogin);
 
     }
