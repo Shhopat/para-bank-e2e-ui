@@ -36,6 +36,50 @@ public class RegisterPage {
     public boolean isEnabledButtonRegister() {
         return BUTTON_REGISTER.isEnabled();
     }
+    // Проверка доступности полей
+    public boolean isFirstNameEnabled() {
+        return FIRST_NAME.isEnabled();
+    }
+
+    public boolean isLastNameEnabled() {
+        return LAST_NAME.isEnabled();
+    }
+
+    public boolean isAddressEnabled() {
+        return ADDRESS.isEnabled();
+    }
+
+    public boolean isCityEnabled() {
+        return CITY.isEnabled();
+    }
+
+    public boolean isStateEnabled() {
+        return STATE.isEnabled();
+    }
+
+    public boolean isZipCodeEnabled() {
+        return ZIP_CODE.isEnabled();
+    }
+
+    public boolean isPhoneNumberEnabled() {
+        return PHONE_NUMBER.isEnabled();
+    }
+
+    public boolean isSsnEnabled() {
+        return SSN.isEnabled();
+    }
+
+    public boolean isUsernameEnabled() {
+        return USERNAME.isEnabled();
+    }
+
+    public boolean isPasswordEnabled() {
+        return PASSWORD.isEnabled();
+    }
+
+    public boolean isRepeatedPasswordEnabled() {
+        return REPEATED_PASSWORD.isEnabled();
+    }
 
 
     public boolean register(UserRegistration userRegistration) {
@@ -53,8 +97,11 @@ public class RegisterPage {
         BUTTON_REGISTER.shouldBe(Condition.visible).click();
         return MESSAGE_AFTER_REGISTER.shouldBe(Condition.visible).getText().contains(userRegistration.getUsername());
 
-
     }
+
+
+
+
 
 
 }

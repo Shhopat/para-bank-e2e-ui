@@ -21,8 +21,25 @@ public class RegisterPageUITest extends BaseTest {
         Assertions.assertTrue(mainPage.openRegisterPage().isVisibleFormRegister());
     }
 
+   @Test
+   public void shouldEnabledAllInputFields(){
+        Assertions.assertTrue(mainPage.openRegisterPage().isFirstNameEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isLastNameEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isAddressEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isSsnEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isStateEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isCityEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isZipCodeEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isUsernameEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isPasswordEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isRepeatedPasswordEnabled());
+        Assertions.assertTrue(mainPage.openRegisterPage().isPhoneNumberEnabled());
+   }
+
     @Test
     public void shouldEnabledButtonRegister() {
         Assertions.assertTrue(mainPage.openRegisterPage().isEnabledButtonRegister());
     }
+
+
 }

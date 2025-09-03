@@ -13,12 +13,13 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
 
-    public static void setAll() {
+    public  void setAll() {
         WebDriverManager.chromedriver().setup();
         Configuration.browserSize = "1920x1080";
         Configuration.browser = "chrome";
         Configuration.headless = false;
         Configuration.timeout = 50000;
+
     }
 
     @BeforeEach
