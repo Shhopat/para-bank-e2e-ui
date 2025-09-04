@@ -54,7 +54,15 @@ public class AccountPage {
         return HREF_REQUEST_LOAN.isEnabled();
     }
 
+    public TransferFundsPage openTransfer() {
+        HREF_TRANSFER_FUNDS.shouldBe(Condition.visible, Condition.enabled).click();
+        return new TransferFundsPage();
+    }
 
+    public BilPayPage openBilPayPage() {
+        HREF_BILL_PAY.shouldBe(Condition.visible, Condition.enabled).click();
+        return new BilPayPage();
+    }
 
 
 }

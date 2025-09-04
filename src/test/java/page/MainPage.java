@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import config.AutomationConfig;
+import io.qameta.allure.Step;
 import model.UserLogin;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -47,14 +48,13 @@ public class MainPage {
         return FORGOT_LOGIN_INFO.isEnabled();
     }
 
+    @Step("Выполняем вход под пользователем {userLogin.username}")
     public AccountPage login(UserLogin userLogin) {
         INPUT_USERNAME.shouldBe(Condition.visible).setValue(userLogin.getUsername());
         INPUT_PASSWORD.shouldBe(Condition.visible).setValue(userLogin.getPassword());
         BUTTON_LOGIN.shouldBe(Condition.enabled).click();
         return new AccountPage();
     }
-
-
 
 
 }

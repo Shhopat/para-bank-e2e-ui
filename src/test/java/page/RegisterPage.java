@@ -3,6 +3,7 @@ package page;
 import annotation.UserRandom;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import model.UserRegistration;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -82,6 +83,7 @@ public class RegisterPage {
     }
 
 
+    @Step("Регистрация нового юзера")
     public boolean register(UserRegistration userRegistration) {
         FIRST_NAME.setValue(userRegistration.getFirstName());
         LAST_NAME.setValue(userRegistration.getLastName());
