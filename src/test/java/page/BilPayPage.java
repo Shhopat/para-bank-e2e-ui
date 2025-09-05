@@ -20,6 +20,7 @@ public class BilPayPage {
     private final SelenideElement FROM_ACCOUNT = $x("//select[contains(@name,'fromAccount')]");
     private final SelenideElement BUTTON_SEND_PAYMENT = $x("//input[@type='button']");
     private final SelenideElement MESSAGE_COMPLETE = $x("//h1[contains(text(),'Complete')]");
+    private final SelenideElement FROM_ACCOUNT_VAlUE = $x("//select[@name='fromAccountId']/option[@value]");
 
     @Step("отправляем средства в размере {transferPayee.amount} co счета {transferPayee.fromAccountNumber} получателю {transferPayee.payeeName} на счет {transferPayee.accountNumber}")
     public BilPayPage billPayFromTo(TransferPayee transferPayee) {
@@ -41,6 +42,11 @@ public class BilPayPage {
     @Step("Проверяем успешное завершение платежа")
     public boolean isPaymentComplete() {
         return MESSAGE_COMPLETE.shouldBe(Condition.visible, Condition.enabled).isDisplayed();
+    }
+
+
+    public String getValueFromAccount() {
+        return FROM_ACCOUNT_VAlUE.getAttribute("value");
     }
 
 

@@ -16,6 +16,8 @@ public class TransferFundsPage {
     private final SelenideElement INPUT_TO_ACCOUNT = $x("//select[@id='toAccountId']");
     private final SelenideElement BUTTON_TRANSFER = $x("//input[@type='submit']");
     private final SelenideElement MESSAGE_TRANSFER = $x("//h1[@class='title' and contains(text(),'Complete')]");
+    private final SelenideElement FROM_ACCOUNT = $x("//select[@id='fromAccountId']/option[@value]");
+    private final SelenideElement TO_ACCOUNT = $x("//select[@id='toAccountId']/option[@value]");
 
 
     @Step("Перевести {transfer.amount} со счета {transfer.fromAccount} на счет {transfer.toAccount}")
@@ -30,6 +32,14 @@ public class TransferFundsPage {
     @Step("Проверяем успешный перевод между счетами")
     public boolean isTransferComplete() {
         return MESSAGE_TRANSFER.shouldBe(Condition.visible).isDisplayed();
+    }
+
+    public String getValueFromAccount() {
+        return FROM_ACCOUNT.getSelectedOption().getAttribute("value");
+    }
+
+    public String getValueToAccount(){
+        return TO_ACCOUNT.getSelectedOption().getAttribute("value");
     }
 
 

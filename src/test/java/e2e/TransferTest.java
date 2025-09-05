@@ -11,7 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import page.AccountPage;
+import page.BilPayPage;
 import page.MainPage;
+import page.TransferFundsPage;
 
 @Owner("Ibragim")
 @Tag("smoke")
@@ -20,7 +22,8 @@ public class TransferTest extends BaseTest {
     private final UserLogin userLogin = new UserLogin();
     private final Transfer transfer = new Transfer();
     private final AccountPage accountPage = new AccountPage();
-    private final TransferPayee transferPayee = new TransferPayee();
+    private final TransferFundsPage transferFundsPage = new TransferFundsPage();
+    private final BilPayPage bilPayPage = new BilPayPage();
 
 
     @BeforeEach
@@ -33,7 +36,10 @@ public class TransferTest extends BaseTest {
     @Description(value = "Перевод денег между счетами")
     public void shouldTransferMoneyEachOtherAccounts() {
         Assertions.assertTrue(accountPage.openTransfer()
-                .transferMoneyFromTo(transfer)
+                .transferMoneyFromTo(Transfer.builder()
+                        .fromAccount(transferFundsPage.getValueFromAccount())
+                        .toAccount(transferFundsPage.getValueToAccount())
+                        .build())
                 .isTransferComplete());
     }
 
@@ -41,6 +47,8 @@ public class TransferTest extends BaseTest {
     @Description(value = "Перевод на счет другого аккаунта")
     public void shouldPayFromAccountToAccount() {
         Assertions.assertTrue(accountPage.openBilPayPage()
-                .billPayFromTo(transferPayee).isPaymentComplete());
+                .billPayFromTo(TransferPayee.builder().fromAccountNumber(
+                        bilPayPage.getValueFromAccount()).build())
+                .isPaymentComplete());
     }
 }

@@ -38,6 +38,6 @@ public class TransferPayee {
     @Builder.Default
     private String amount = "1000";
 
-    @Builder.Default
-    private String fromAccountNumber = "13344";
+
+    private String fromAccountNumber;
 }
